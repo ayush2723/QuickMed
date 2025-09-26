@@ -44,8 +44,8 @@ const Verify = () => {
     }, [token])
 
     return (
-        <div className='min-h-[60vh] flex items-center justify-center'>
-            <div className="w-20 h-20 border-4 border-gray-300 border-t-4 border-t-primary rounded-full animate-spin"></div>
+        <div className='min-h-[60vh] flex items-center justify-center bg-neutral-50'>
+            <div className="w-24 h-24 border-4 border-neutral-300 border-t-4 border-t-primary rounded-full animate-spin shadow-lg"></div>
         </div>
     )
 }

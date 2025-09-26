@@ -1,11 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    font-family: Outfit;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+body {
+    background-color: #FAFBFC;
+    color: #323F4B;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+p {
+    line-height: 1.6;
 }
 
 .active hr {
@@ -14,7 +28,7 @@
 
 @media (max-width:740px) {
     .active  p{
-       @apply text-white bg-primary
+       @apply text-white bg-primary rounded-lg
     }
 }
 

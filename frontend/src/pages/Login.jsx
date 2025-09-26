@@ -51,29 +51,29 @@ const Login = () => {
   }, [token])
 
   return (
-    <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center'>
-      <div className='flex flex-col gap-3 m-auto items-start p-8 min-w-[340px] sm:min-w-96 border rounded-xl text-[#5E5E5E] text-sm shadow-lg'>
-        <p className='text-2xl font-semibold'>{state === 'Sign Up' ? 'Create Account' : 'Login'}</p>
-        <p>Please {state === 'Sign Up' ? 'sign up' : 'log in'} to book appointment</p>
+    <form onSubmit={onSubmitHandler} className='min-h-[80vh] flex items-center bg-neutral-50'>
+      <div className='flex flex-col gap-6 m-auto items-start p-10 min-w-[340px] sm:min-w-96 border border-neutral-200 rounded-2xl text-neutral-700 text-sm shadow-xl bg-white'>
+        <p className='text-3xl font-bold text-neutral-800'>{state === 'Sign Up' ? 'Create Account' : 'Login'}</p>
+        <p className='text-neutral-600'>Please {state === 'Sign Up' ? 'sign up' : 'log in'} to book appointment</p>
         {state === 'Sign Up'
-          ? <div className='w-full '>
-            <p>Full Name</p>
-            <input onChange={(e) => setName(e.target.value)} value={name} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="text" required />
+          ? <div className='w-full'>
+            <p className='font-medium text-neutral-700 mb-2'>Full Name</p>
+            <input onChange={(e) => setName(e.target.value)} value={name} className='border border-neutral-300 rounded-lg w-full p-3 mt-1 focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all duration-200' type="text" required />
           </div>
           : null
         }
-        <div className='w-full '>
-          <p>Email</p>
-          <input onChange={(e) => setEmail(e.target.value)} value={email} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="email" required />
+        <div className='w-full'>
+          <p className='font-medium text-neutral-700 mb-2'>Email</p>
+          <input onChange={(e) => setEmail(e.target.value)} value={email} className='border border-neutral-300 rounded-lg w-full p-3 mt-1 focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all duration-200' type="email" required />
         </div>
-        <div className='w-full '>
-          <p>Password</p>
-          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-[#DADADA] rounded w-full p-2 mt-1' type="password" required />
+        <div className='w-full'>
+          <p className='font-medium text-neutral-700 mb-2'>Password</p>
+          <input onChange={(e) => setPassword(e.target.value)} value={password} className='border border-neutral-300 rounded-lg w-full p-3 mt-1 focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all duration-200' type="password" required />
         </div>
-        <button className='bg-primary text-white w-full py-2 my-2 rounded-md text-base'>{state === 'Sign Up' ? 'Create account' : 'Login'}</button>
+        <button className='bg-primary text-white w-full py-4 my-2 rounded-lg text-base font-medium hover:bg-primary-dark transition-all duration-200 shadow-sm'>{state === 'Sign Up' ? 'Create account' : 'Login'}</button>
         {state === 'Sign Up'
-          ? <p>Already have an account? <span onClick={() => setState('Login')} className='text-primary underline cursor-pointer'>Login here</span></p>
-          : <p>Create an new account? <span onClick={() => setState('Sign Up')} className='text-primary underline cursor-pointer'>Click here</span></p>
+          ? <p className='text-neutral-600'>Already have an account? <span onClick={() => setState('Login')} className='text-primary font-medium underline cursor-pointer hover:text-primary-dark transition-colors duration-200'>Login here</span></p>
+          : <p className='text-neutral-600'>Create an new account? <span onClick={() => setState('Sign Up')} className='text-primary font-medium underline cursor-pointer hover:text-primary-dark transition-colors duration-200'>Click here</span></p>
         }
       </div>
     </form>

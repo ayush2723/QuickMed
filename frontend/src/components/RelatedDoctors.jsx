@@ -16,24 +16,23 @@ const RelatedDoctors = ({ speciality, docId }) => {
     }, [doctors, speciality, docId])
 
     return (
-        <div className='flex flex-col items-center gap-4 my-16 text-[#262626]'>
-            <h1 className='text-3xl font-medium'>Related Doctors</h1>
-            <p className='sm:w-1/3 text-center text-sm'>Simply browse through our extensive list of trusted doctors.</p>
-            <div className='w-full grid grid-cols-auto gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
+        <div className='flex flex-col items-center gap-6 my-20 text-neutral-800'>
+            <h1 className='text-3xl md:text-4xl font-bold text-center'>Related Doctors</h1>
+            <p className='sm:w-1/2 text-center text-base text-neutral-600 leading-relaxed'>Simply browse through our extensive list of trusted doctors.</p>
+            <div className='w-full grid grid-cols-auto gap-6 pt-8 gap-y-8 px-3 sm:px-0'>
                 {relDoc.map((item, index) => (
-                    <div onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} className='border border-[#C9D8FF] rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                        <img className='bg-[#EAEFFF]' src={item.image} alt="" />
-                        <div className='p-4'>
-                            <div className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : "text-gray-500"}`}>
-                                <p className={`w-2 h-2 rounded-full ${item.available ? 'bg-green-500' : "bg-gray-500"}`}></p><p>{item.available ? 'Available' : "Not Available"}</p>
+                    <div onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} className='border border-neutral-200 rounded-2xl overflow-hidden cursor-pointer hover:translate-y-[-8px] hover:shadow-xl transition-all duration-300 bg-white' key={index}>
+                        <img className='bg-primary-light w-full h-48 object-cover' src={item.image} alt="" />
+                        <div className='p-6'>
+                            <div className={`flex items-center gap-2 text-sm mb-3 ${item.available ? 'text-success' : "text-neutral-500"}`}>
+                                <p className={`w-3 h-3 rounded-full ${item.available ? 'bg-success' : "bg-neutral-400"}`}></p><p className='font-medium'>{item.available ? 'Available' : "Not Available"}</p>
                             </div>
-                            <p className='text-[#262626] text-lg font-medium'>{item.name}</p>
-                            <p className='text-[#5C5C5C] text-sm'>{item.speciality}</p>
+                            <p className='text-neutral-800 text-lg font-semibold mb-1'>{item.name}</p>
+                            <p className='text-neutral-600 text-sm'>{item.speciality}</p>
                         </div>
                     </div>
                 ))}
             </div>
-            {/* <button className='bg-[#EAEFFF] text-gray-600 px-12 py-3 rounded-full mt-10'>more</button> */}
         </div>
     )
 }
