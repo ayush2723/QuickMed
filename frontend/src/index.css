@@ -1,25 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #FAFBFC;
-    color: #323F4B;
+    background: linear-gradient(to bottom, #F9FAFB 0%, #F0FDFF 100%);
+    min-height: 100vh;
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 1.875rem;
 }
 
 p {
     line-height: 1.6;
+    color: #4B5563;
 }
 
 .active hr {
@@ -27,11 +46,64 @@ p {
 }
 
 @media (max-width:740px) {
-    .active  p{
-       @apply text-white bg-primary rounded-lg
+    .active p {
+       @apply text-white bg-primary-600 rounded-xl
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
     }
 }
 
 ::-webkit-scrollbar {
-    @apply hidden
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F3F4F6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+
+.card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
 }

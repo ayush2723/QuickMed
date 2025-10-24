@@ -17,60 +17,196 @@ const Navbar = () => {
   }
 
   return (
-    <div className='flex items-center justify-between text-sm py-6 mb-8 border-b border-neutral-200 bg-white shadow-sm rounded-lg px-6'>
-      <img onClick={() => navigate('/')} className='w-44 cursor-pointer' src={assets.logo} alt="" />
-      <ul className='md:flex items-start gap-8 font-medium hidden'>
-        <NavLink to='/' >
-          <li className='py-2 px-3 rounded-lg hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>HOME</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/doctors' >
-          <li className='py-2 px-3 rounded-lg hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>ALL DOCTORS</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/about' >
-          <li className='py-2 px-3 rounded-lg hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>ABOUT</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-        <NavLink to='/contact' >
-          <li className='py-2 px-3 rounded-lg hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>CONTACT</li>
-          <hr className='border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden' />
-        </NavLink>
-      </ul>
+    <nav className='sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-neutral-200/50 shadow-soft'>
+      <div className='flex items-center justify-between px-6 py-4 max-w-7xl mx-auto'>
+        <img 
+          onClick={() => navigate('/')} 
+          className='h-12 cursor-pointer transition-transform hover:scale-105' 
+          src={assets.logo} 
+          alt="HealthCare Logo" 
+        />
+        
+        <ul className='hidden md:flex items-center gap-1'>
+          <NavLink to='/' className={({ isActive }) => 
+            `px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+              isActive 
+                ? 'bg-primary-600 text-white shadow-medium' 
+                : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+            }`
+          }>
+            HOME
+          </NavLink>
+          <NavLink to='/doctors' className={({ isActive }) => 
+            `px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+              isActive 
+                ? 'bg-primary-600 text-white shadow-medium' 
+                : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+            }`
+          }>
+            DOCTORS
+          </NavLink>
+          <NavLink to='/about' className={({ isActive }) => 
+            `px-5 py.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+              isActive 
+                ? 'bg-primary-600 text-white shadow-medium' 
+                : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+            }`
+          }>
+            ABOUT
+          </NavLink>
+          <NavLink to='/contact' className={({ isActive }) => 
+            `px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+              isActive 
+                ? 'bg-primary-600 text-white shadow-medium' 
+                : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+            }`
+          }>
+            CONTACT
+          </NavLink>
+        </ul>
 
-      <div className='flex items-center gap-4 '>
-        {
-          token && userData
-            ? <div className='flex items-center gap-2 cursor-pointer group relative'>
-              <img className='w-10 h-10 rounded-full border-2 border-primary-light shadow-sm' src={userData.image} alt="" />
-              <img className='w-2.5' src={assets.dropdown_icon} alt="" />
-              <div className='absolute top-0 right-0 pt-16 text-base font-medium text-neutral-600 z-20 hidden group-hover:block'>
-                <div className='min-w-48 bg-white rounded-xl shadow-lg border border-neutral-200 flex flex-col gap-1 p-2'>
-                  <p onClick={() => navigate('/my-profile')} className='hover:bg-primary-light hover:text-primary-dark cursor-pointer px-4 py-3 rounded-lg transition-all duration-200'>My Profile</p>
-                  <p onClick={() => navigate('/my-appointments')} className='hover:bg-primary-light hover:text-primary-dark cursor-pointer px-4 py-3 rounded-lg transition-all duration-200'>My Appointments</p>
-                  <p onClick={logout} className='hover:bg-error hover:text-white cursor-pointer px-4 py-3 rounded-lg transition-all duration-200'>Logout</p>
+        <div className='flex items-center gap-4'>
+          {token && userData ? (
+            <div className='relative group'>
+              <button className='flex items-center gap-3 px-4 py-2 rounded-xl hover:bg-neutral-50 transition-all duration-200'>
+                <img 
+                  className='w-10 h-10 rounded-full border-2 border-primary-500 object-cover' 
+                  src={userData.image} 
+                  alt="Profile" 
+                />
+                <img 
+                  className='w-4 h-4 transition-transform group-hover:rotate-180 duration-300' 
+                  src={assets.dropdown_icon} 
+                  alt="Dropdown" 
+                />
+              </button>
+              
+              <div className='absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-large border border-neutral-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 overflow-hidden'>
+                <div className='p-2'>
+                  <button 
+                    onClick={() => navigate('/my-profile')} 
+                    className='w-full text-left px-4 py-3 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 font-medium text-neutral-700'
+                  >
+                    My Profile
+                  </button>
+                  <button 
+                    onClick={() => navigate('/my-appointments')} 
+                    className='w-full text-left px-4 py-3 rounded-xl hover:bg-primary-50 hover:text-primary-700 transition-all duration-200 font-medium text-neutral-700'
+                  >
+                    My Appointments
+                  </button>
+                  <hr className='my-2 border-neutral-200' />
+                  <button 
+                    onClick={logout} 
+                    className='w-full text-left px-4 py-3 rounded-xl hover:bg-error hover:text-white transition-all duration-200 font-medium text-error'
+                  >
+                    Logout
+                  </button>
                 </div>
               </div>
             </div>
-            : <button onClick={() => navigate('/login')} className='bg-primary text-white px-8 py-3 rounded-full font-medium hidden md:block hover:bg-primary-dark transition-all duration-200 shadow-sm'>Create account</button>
-        }
-        <img onClick={() => setShowMenu(true)} className='w-6 md:hidden' src={assets.menu_icon} alt="" />
-
-        {/* ---- Mobile Menu ---- */}
-        <div className={`md:hidden ${showMenu ? 'fixed w-full' : 'h-0 w-0'} right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all shadow-lg`}>
-          <div className='flex items-center justify-between px-6 py-8 border-b border-neutral-200'>
-            <img src={assets.logo} className='w-36' alt="" />
-            <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-7' alt="" />
-          </div>
-          <ul className='flex flex-col items-center gap-4 mt-8 px-6 text-lg font-medium'>
-            <NavLink onClick={() => setShowMenu(false)} to='/'><p className='px-6 py-3 rounded-lg inline-block hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>HOME</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/doctors' ><p className='px-6 py-3 rounded-lg inline-block hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>ALL DOCTORS</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/about' ><p className='px-6 py-3 rounded-lg inline-block hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>ABOUT</p></NavLink>
-            <NavLink onClick={() => setShowMenu(false)} to='/contact' ><p className='px-6 py-3 rounded-lg inline-block hover:bg-primary-light hover:text-primary-dark transition-all duration-200'>CONTACT</p></NavLink>
-          </ul>
+          ) : (
+            <button 
+              onClick={() => navigate('/login')} 
+              className='hidden md:block bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-3 rounded-xl font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-medium hover:shadow-large'
+            >
+              Sign In
+            </button>
+          )}
+          
+          <button 
+            onClick={() => setShowMenu(true)} 
+            className='md:hidden p-2 rounded-lg hover:bg-neutral-100 transition-all duration-200'
+          >
+            <img className='w-6 h-6' src={assets.menu_icon} alt="Menu" />
+          </button>
         </div>
+
+        {showMenu && (
+          <div className='fixed inset-0 z-50 md:hidden'>
+            <div 
+              className='absolute inset-0 bg-black/50 backdrop-blur-sm'
+              onClick={() => setShowMenu(false)}
+            />
+            <div className='absolute right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-white shadow-2xl'>
+              <div className='flex items-center justify-between px-6 py-6 border-b border-neutral-200'>
+                <img src={assets.logo} className='h-10' alt="Logo" />
+                <button 
+                  onClick={() => setShowMenu(false)}
+                  className='p-2 rounded-lg hover:bg-neutral-100 transition-all duration-200'
+                >
+                  <img src={assets.cross_icon} className='w-6 h-6' alt="Close" />
+                </button>
+              </div>
+              
+              <div className='p-6 space-y-2'>
+                <NavLink 
+                  to='/' 
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) => 
+                    `block px-5 py-4 rounded-xl font-semibold transition-all duration-200 ${
+                      isActive 
+                        ? 'bg-primary-600 text-white shadow-medium' 
+                        : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+                    }`
+                  }
+                >
+                  HOME
+                </NavLink>
+                <NavLink 
+                  to='/doctors' 
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) => 
+                    `block px-5 py-4 rounded-xl font-semibold transition-all duration-200 ${
+                      isActive 
+                        ? 'bg-primary-600 text-white shadow-medium' 
+                        : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+                    }`
+                  }
+                >
+                  ALL DOCTORS
+                </NavLink>
+                <NavLink 
+                  to='/about' 
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) => 
+                    `block px-5 py-4 rounded-xl font-semibold transition-all duration-200 ${
+                      isActive 
+                        ? 'bg-primary-600 text-white shadow-medium' 
+                        : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+                    }`
+                  }
+                >
+                  ABOUT
+                </NavLink>
+                <NavLink 
+                  to='/contact' 
+                  onClick={() => setShowMenu(false)}
+                  className={({ isActive }) => 
+                    `block px-5 py-4 rounded-xl font-semibold transition-all duration-200 ${
+                      isActive 
+                        ? 'bg-primary-600 text-white shadow-medium' 
+                        : 'text-neutral-700 hover:bg-primary-50 hover:text-primary-700'
+                    }`
+                  }
+                >
+                  CONTACT
+                </NavLink>
+                
+                {!token && (
+                  <button 
+                    onClick={() => { setShowMenu(false); navigate('/login'); }} 
+                    className='w-full mt-6 bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 rounded-xl font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-200 shadow-medium'
+                  >
+                    Sign In
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </nav>
   )
 }
 
