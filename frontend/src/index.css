@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,18 +10,18 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #F9FAFB 0%, #F0FDFF 100%);
+    background: linear-gradient(135deg, #F9FAFB 0%, #F0FDFF 50%, #FAFBFC 100%);
     min-height: 100vh;
     color: #374151;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.15;
     color: #111827;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
 }
 
 h1 {
@@ -37,8 +37,23 @@ h3 {
 }
 
 p {
-    line-height: 1.6;
+    line-height: 1.7;
     color: #4B5563;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out;
 }
 
 .active hr {
