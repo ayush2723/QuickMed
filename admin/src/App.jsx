@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import {useContext } from 'react'
 import { DoctorContext } from './context/DoctorContext';
 import { AdminContext } from './context/AdminContext';
 import { Route, Routes } from 'react-router-dom'
@@ -21,7 +21,7 @@ const App = () => {
   const { aToken } = useContext(AdminContext)
 
   return dToken || aToken ? (
-    <div className='bg-[#F8F9FD]'>
+    <div className='min-h-screen'>
       <ToastContainer />
       <Navbar />
       <div className='flex items-start'>

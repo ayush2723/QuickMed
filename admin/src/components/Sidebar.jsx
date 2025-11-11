@@ -10,39 +10,39 @@ const Sidebar = () => {
   const { aToken } = useContext(AdminContext)
 
   return (
-    <div className='min-h-screen bg-white border-r'>
-      {aToken && <ul className='text-[#515151] mt-5'>
+    <div className='min-h-screen bg-white/80 backdrop-blur-sm border-r border-neutral-200 shadow-sm'>
+      {aToken && <ul className='text-neutral-700 mt-8 space-y-2 px-3'>
 
-        <NavLink to={'/admin-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.home_icon} alt='' />
-          <p className='hidden md:block'>Dashboard</p>
+        <NavLink to={'/admin-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.home_icon} alt='' />
+          <p className='hidden md:block font-medium'>Dashboard</p>
         </NavLink>
-        <NavLink to={'/all-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.appointment_icon} alt='' />
-          <p className='hidden md:block'>Appointments</p>
+        <NavLink to={'/all-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.appointment_icon} alt='' />
+          <p className='hidden md:block font-medium'>Appointments</p>
         </NavLink>
-        <NavLink to={'/add-doctor'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.add_icon} alt='' />
-          <p className='hidden md:block'>Add Doctor</p>
+        <NavLink to={'/add-doctor'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.add_icon} alt='' />
+          <p className='hidden md:block font-medium'>Add Doctor</p>
         </NavLink>
-        <NavLink to={'/doctor-list'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.people_icon} alt='' />
-          <p className='hidden md:block'>Doctors List</p>
+        <NavLink to={'/doctor-list'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.people_icon} alt='' />
+          <p className='hidden md:block font-medium'>Doctors List</p>
         </NavLink>
       </ul>}
 
-      {dToken && <ul className='text-[#515151] mt-5'>
-        <NavLink to={'/doctor-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.home_icon} alt='' />
-          <p className='hidden md:block'>Dashboard</p>
+      {dToken && <ul className='text-neutral-700 mt-8 space-y-2 px-3'>
+        <NavLink to={'/doctor-dashboard'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.home_icon} alt='' />
+          <p className='hidden md:block font-medium'>Dashboard</p>
         </NavLink>
-        <NavLink to={'/doctor-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.appointment_icon} alt='' />
-          <p className='hidden md:block'>Appointments</p>
+        <NavLink to={'/doctor-appointments'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.appointment_icon} alt='' />
+          <p className='hidden md:block font-medium'>Appointments</p>
         </NavLink>
-        <NavLink to={'/doctor-profile'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-72 cursor-pointer ${isActive ? 'bg-[#F2F3FF] border-r-4 border-primary' : ''}`}>
-          <img className='min-w-5' src={assets.people_icon} alt='' />
-          <p className='hidden md:block'>Profile</p>
+        <NavLink to={'/doctor-profile'} className={({ isActive }) => `flex items-center gap-3 py-3.5 px-4 md:px-6 md:min-w-64 cursor-pointer rounded-xl transition-all duration-300 group ${isActive ? 'bg-gradient-to-r from-primary to-primary-dark text-white shadow-lg' : 'hover:bg-primary/5 hover:translate-x-1'}`}>
+          <img className='min-w-5 transition-transform duration-300 group-hover:scale-110' src={assets.people_icon} alt='' />
+          <p className='hidden md:block font-medium'>Profile</p>
         </NavLink>
       </ul>}
     </div>

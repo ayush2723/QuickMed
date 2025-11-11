@@ -25,15 +25,16 @@ const About = () => {
         </div>
         <div className='flex flex-col justify-center gap-8 md:w-2/3 text-base md:text-lg text-neutral-600 leading-relaxed'>
           <p className='animate-fade-in font-light'>
-            Welcome to <span className='font-semibold text-primary'>Prescripto</span>, your trusted partner in managing your healthcare needs conveniently and efficiently. At Prescripto, we understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
-          </p>
+          
+
+Welcome to <span className='font-semibold text-primary'>QuickMed</span>, your trusted platform for managing your medical needs quickly and efficiently. At QuickMed, we make it easy for patients to discover doctors and schedule appointments effortlessly.</p>
           <p className='font-light'>
-            Prescripto is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Prescripto is here to support you every step of the way.
+            QuickMed is dedicated to transforming healthcare through innovation. We constantly refine our platform, using advanced technology to make every interaction smoother and more reliable. Whether you’re scheduling your first consultation or managing regular check-ups, QuickMed is here to make your healthcare journey simple and seamless.
           </p>
           <div className='space-y-4 pt-4'>
             <h3 className='text-neutral-900 text-2xl md:text-3xl font-bold tracking-tight'>Our Vision</h3>
             <p className='font-light'>
-              Our vision at Prescripto is to create a seamless healthcare experience for every user. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
+             Our vision at <span className='font-semibold text-primary'>QuickMed</span> is to make healthcare accessible and effortless for everyone. We strive to connect patients and doctors seamlessly, ensuring you get the right care at the right time, without any barriers.
             </p>
           </div>
         </div>

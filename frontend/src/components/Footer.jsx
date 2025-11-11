@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 import { assets } from '../assets/assets'
 
 const Footer = () => {
@@ -8,33 +8,32 @@ const Footer = () => {
 
         <div>
           <img className='mb-6 w-44' src={assets.logo} alt="" />
-          <p className='w-full md:w-2/3 text-neutral-600 leading-7'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p className='w-full md:w-2/3 text-neutral-600 leading-7'>Welcome to QuickMed, your one-stop platform for effortless healthcare access.
+Easily browse and book appointments from a trusted list of doctors, anytime, anywhere.
+Patients get quick, reliable care, while doctors connect with more patients seamlessly.
+Healthcare made simple, smart, and stress-free with QuickMed.</p>
         </div>
 
         <div>
           <p className='text-xl font-semibold mb-6 text-neutral-800'>COMPANY</p>
           <ul className='flex flex-col gap-3 text-neutral-600'>
-            <li className='hover:text-primary cursor-pointer transition-colors duration-200'>Home</li>
-            <li className='hover:text-primary cursor-pointer transition-colors duration-200'>About us</li>
-            <li className='hover:text-primary cursor-pointer transition-colors duration-200'>Delivery</li>
-            <li className='hover:text-primary cursor-pointer transition-colors duration-200'>Privacy policy</li>
+            <li className='hover:text-primary cursor-pointer transition-colors duration-200'><Link to="/">Home</Link></li>
+            <li className='hover:text-primary cursor-pointer transition-colors duration-200'><Link to="/about">About us</Link></li>
+            <li className='hover:text-primary cursor-pointer transition-colors duration-200'><Link to="/contact">Contact Us</Link></li>
           </ul>
         </div>
 
         <div>
           <p className='text-xl font-semibold mb-6 text-neutral-800'>GET IN TOUCH</p>
           <ul className='flex flex-col gap-3 text-neutral-600'>
-            <li>+1-212-456-7890</li>
-            <li>greatstackdev@gmail.com</li>
+            <li>8219861829</li>
+            <li>ayushsharma@gmail.com</li>
           </ul>
         </div>
 
       </div>
 
-      <div>
-        <hr className='border-neutral-200' />
-        <p className='py-6 text-sm text-center text-neutral-500'>Copyright 2024 @ Prescripto.com - All Right Reserved.</p>
-      </div>
+    
 
     </div>
   )
