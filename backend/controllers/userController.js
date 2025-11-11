@@ -26,6 +26,10 @@ const registerUser = async (req, res) => {
     }
 
     // hashing user password
+    let user = await userModel.findOne({ email });
+    if (user) {
+      return res.json({ success: false, message: "User already exists" });
+    }
     const salt = await bycrypt.genSalt(10);
     const hashedPassword = await bycrypt.hash(password, salt);
 
@@ -36,7 +40,7 @@ const registerUser = async (req, res) => {
     };
 
     const newUser = new userModel(userData);
-    const user = await newUser.save();
+    user = await newUser.save();
 
     const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
 
@@ -75,6 +79,9 @@ const loginUser = async (req, res) => {
 const getProfile = async (req, res) => {
   try {
     const { userId } = req.body;
+    if(!userId) {
+      return res.json({ success: false, message: "User ID missing" });
+    }
     const useData = await userModel.findById(userId).select("-password");
 
     res.json({ success: true, user: useData });

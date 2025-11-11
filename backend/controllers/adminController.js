@@ -63,6 +63,11 @@ const addDoctor = async (req, res) => {
     });
     const imageUrl = imageUpload.secure_url;
 
+    let newDoctor = await doctorModel.findOne({ email });
+    if (newDoctor) {
+      return res.json({ success: false, message: "Doctor already exists" });
+    }
+
     const doctorData = {
       name,
       email,
@@ -77,7 +82,7 @@ const addDoctor = async (req, res) => {
       date: Date.now(),
     };
 
-    const newDoctor = new doctorModel(doctorData);
+    newDoctor = new doctorModel(doctorData);
     await newDoctor.save();
 
     res.json({ success: true, message: "Doctor Added" });
@@ -91,19 +96,21 @@ const addDoctor = async (req, res) => {
 const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password) {
+      return res.json({ success: false, message: "Missing Credentials" });
+    }
 
     if (
       email === process.env.ADMIN_EMAIL &&
       password === process.env.ADMIN_PASSWORD
     ) {
       const token = jwt.sign(email + password, process.env.JWT_SECRET);
-      res.json({ success: true, token });
+      return res.json({ success: true, token });
     } else {
-      res.json({ success: false, message: "Invalid credentials" });
+      return res.json({ success: false, message: "Invalid credentials" });
     }
   } catch (error) {
-    console.log(error);
-    res.json({ success: false, message: error.message });
+    return res.json({ success: false, message: error.message });
   }
 };
 
@@ -135,6 +142,9 @@ const appointmentCancel = async (req, res) => {
     const { appointmentId } = req.body;
 
     const appointmentData = await appointmentModel.findById(appointmentId);
+    if (!appointmentData) {
+      return res.json({ success: false, message: "Appointment not found" });
+    }
 
     await appointmentModel.findByIdAndUpdate(appointmentId, {
       cancelled: true,
@@ -164,9 +174,9 @@ const appointmentCancel = async (req, res) => {
 // API to get dashboard data for admin panel
 const adminDashboard = async (req, res) => {
   try {
-    const doctors = await doctorModel.find({});
-    const users = await userModel.find({});
-    const appointments = await appointmentModel.find({});
+    const doctors = await doctorModel.find();
+    const users = await userModel.find();
+    const appointments = await appointmentModel.find();
 
     const dashData = {
       doctors: doctors.length,
@@ -175,10 +185,10 @@ const adminDashboard = async (req, res) => {
       latestAppointments: appointments.reverse().slice(0, 5),
     };
 
-    res.json({ success: true, dashData });
+    return res.json({ success: true, dashData });
   } catch (error) {
-    console.log(error);
-    res.json({ success: false, message: error.message });
+    console.log(error.message);
+    return res.json({ success: false, message: error.message });
   }
 };
 
